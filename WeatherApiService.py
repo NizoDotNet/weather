@@ -4,6 +4,7 @@ class WeatherApiServise(StateServiceMixin):
     def __init__(self, api_key: str):
         self._url = f"https://api.weatherapi.com/v1/current.json?key={api_key}"
         self._forecast = {}
+        self.load_data()
     def add_city(self, city_name: str) -> int:
         try:
             response = requests.get(self._url + f'&q={city_name}')

@@ -23,7 +23,8 @@ while True:
 
     elif option == "search":
         search_city = input("Enter the name of the city you are looking for: ").strip().lower()
-        api.get_city(search_city)
+        info = api.get_city(search_city)
+        print(f"\n🔍 {search_city.title()} --> {info['temperature']}°C (Time: {info['time']})")
 
     elif option == "delete":
         delete_city = input("Enter the name of the city you are deleting : ").strip().lower()

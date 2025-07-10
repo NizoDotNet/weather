@@ -1,6 +1,13 @@
 import json
 
 class StateServiceMixin:
+    def load_data(self):
+        file = None
+        try:
+            file = open('weather_application', 'r', encoding='UTF-8')
+            self._forecast = json.load(file.read().strip())
+        finally:
+            file.close()
     def add(self, weather_data: dict, city_name: str):
         temp = weather_data['current']['temp_c']
         time_of_data = weather_data['location']['localtime']
